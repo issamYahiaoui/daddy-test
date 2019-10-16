@@ -44,18 +44,40 @@
    
    <br><br>
   <mat-card class="cardContainer" >
-    <div class="form-container">
+    <form class="form-container" [formGroup]="weatherForm"> 
+        
           <mat-form-field>
-            <input matInput placeholder="location/city name ...">
+            <input #city matInput type = "text" name = "city" matInput placeholder="location/city name ..."  formControlName="city" required>
           </mat-form-field>
         
           <mat-form-field>
-            <mat-select placeholder="Weather's type :">
-              <mat-option value="option">Rain</mat-option>
-              <mat-option value="option">Cloudy</mat-option>
-              <mat-option value="option">Sunny</mat-option>
+            <mat-select #type  placeholder="Weather's type :"  name= "type"  (selectionChange)="changeType($event)"  formControlName="type" required>
+              <mat-option value="rain">Rain</mat-option>
+              <mat-option value="cloudy">Cloudy</mat-option>
+              <mat-option value="sunny">Sunny</mat-option>
             </mat-select>
           </mat-form-field>
+
+     
+              <button  mat-raised-button color="primary" type = "submit" (click) = "onSubmit(city.value, type.value)" >
+                Fetch Weather
+              </button>
+      
+
+    </form>
+    <div class="result-container">
+        
+        <br>
+        <div class="error-block" *ngIf="submitted && ( handleError('city', 'required') || handleError('type', 'required') )">
+            You must fill all the fields
+          </div>
+        <mat-list>
+          <mat-list-item *ngIf="!weatherData.description.length">The Weather is  {{ weatherData.description }}</mat-list-item>
+          <mat-list-item *ngIf="!weatherData.rain.length"> Rain : {{ weatherData.rain }}</mat-list-item>
+          <mat-list-item *ngIf="!weatherData.clouds.length"> Clouds : {{ weatherData.clouds }}</mat-list-item>
+
+          
+        </mat-list>
     </div>
   </mat-card>
 

@@ -10,15 +10,12 @@ import { MatGridListModule  } from '@angular/material/grid-list';
 import { MatFormFieldModule  } from '@angular/material/form-field';
 import { MatInputModule  } from '@angular/material/input';
 import { MatSelectModule  } from '@angular/material/select';
+import {MatButtonModule} from '@angular/material/button';
 
-
-
-
-
-
-
-
-
+import { MatListModule } from '@angular/material/list';
+import { MatDividerModule  } from '@angular/material/divider';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { WeatherService } from './services/weather.service';
 
 @NgModule({
@@ -27,7 +24,9 @@ import { WeatherService } from './services/weather.service';
     WeatherApiComponent
   ],
   imports: [
-  
+
+
+
   BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule ,
@@ -35,7 +34,13 @@ import { WeatherService } from './services/weather.service';
     MatGridListModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSelectModule
+    MatButtonModule,
+    MatSelectModule,
+    MatListModule,
+    MatDividerModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [WeatherService],
   bootstrap: [AppComponent]
