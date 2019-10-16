@@ -71,12 +71,12 @@
         <div class="error-block" *ngIf="submitted && ( handleError('city', 'required') || handleError('type', 'required') )">
             You must fill all the fields
           </div>
-        <mat-list>
-          <mat-list-item *ngIf="!weatherData.description.length">The Weather is  {{ weatherData.description }}</mat-list-item>
-          <mat-list-item *ngIf="!weatherData.rain.length"> Rain : {{ weatherData.rain }}</mat-list-item>
-          <mat-list-item *ngIf="!weatherData.clouds.length"> Clouds : {{ weatherData.clouds }}</mat-list-item>
-
-          
+        <br>
+        <mat-spinner diameter="50" *ngIf="loading===true"></mat-spinner>
+        <mat-list *ngIf="loading===false">
+          <mat-list-item >The Weather is :  <span class="result"> {{ weatherData.description }}</span></mat-list-item>
+          <mat-list-item > Rain : <span class="result"> {{ weatherData.rain || 'None' }}</span></mat-list-item>
+          <mat-list-item > Clouds : <span class="result"> {{ weatherData.clouds || 'None' }}</span></mat-list-item>
         </mat-list>
     </div>
   </mat-card>

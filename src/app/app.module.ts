@@ -11,6 +11,8 @@ import { MatFormFieldModule  } from '@angular/material/form-field';
 import { MatInputModule  } from '@angular/material/input';
 import { MatSelectModule  } from '@angular/material/select';
 import {MatButtonModule} from '@angular/material/button';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
 
 import { MatListModule } from '@angular/material/list';
 import { MatDividerModule  } from '@angular/material/divider';
@@ -40,7 +42,8 @@ import { WeatherService } from './services/weather.service';
     MatDividerModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatProgressSpinnerModule
   ],
   providers: [WeatherService],
   bootstrap: [AppComponent]

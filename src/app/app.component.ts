@@ -12,6 +12,7 @@ export class AppComponent {
   title = 'angular-test';
   weatherForm: FormGroup;
   submitted = false;
+  loading = null ;
   weatherData = {description : String, clouds : String, rain : String }
 
   constructor(
@@ -43,14 +44,17 @@ export class AppComponent {
     console.log(' type  is : ' + type);
     this.submitted = true
     if (this.handleError('city', 'required') || this.handleError('type', 'required')  ) return false
+    this.loading = true
     this.weatherService
         .getWeather(city,type)
         .subscribe(
           res=>{
+
             console.log('res',res)
             this.weatherData.description =  res['weather'][0].description ,
             this.weatherData.clouds = res['clouds']['all'],
             this.weatherData.rain = res['rain']['1h'] , 
+            this.loading = false
             console.log('my weather', this.weatherData) 
           },
           err=>console.log('err',err)
