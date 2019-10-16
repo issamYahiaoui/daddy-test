@@ -8,7 +8,7 @@ import { WeatherService } from '../services/weather.service';
 })
 export class WeatherApiComponent implements OnInit {
 
-  constructor(private weatherService : WeatherService) { }
+  constructor() { }
 
   ngOnInit() {
     console.log('Weather Api Component is wired !')

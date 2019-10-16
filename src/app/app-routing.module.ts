@@ -4,15 +4,7 @@ import { WeatherApiComponent } from './weather-api/weather-api.component';
 import { AppComponent } from './app.component';
 
 const routes: Routes = [
-  {
-    path : '/',
-    redirectTo : 'weather-api',
-    component : AppComponent , 
-  } ,
-  {
-    path : 'weather-api/',
-    component : WeatherApiComponent , 
-  } 
+  
 
 ];
 

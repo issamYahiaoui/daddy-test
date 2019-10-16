@@ -5,6 +5,21 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { WeatherApiComponent } from './weather-api/weather-api.component';
+import { MatCardModule  } from '@angular/material/card';
+import { MatGridListModule  } from '@angular/material/grid-list';
+import { MatFormFieldModule  } from '@angular/material/form-field';
+import { MatInputModule  } from '@angular/material/input';
+import { MatSelectModule  } from '@angular/material/select';
+
+
+
+
+
+
+
+
+
+import { WeatherService } from './services/weather.service';
 
 @NgModule({
   declarations: [
@@ -12,11 +27,17 @@ import { WeatherApiComponent } from './weather-api/weather-api.component';
     WeatherApiComponent
   ],
   imports: [
-    BrowserModule,
+  
+  BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule ,
+    MatCardModule ,
+    MatGridListModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule
   ],
-  providers: [],
+  providers: [WeatherService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
