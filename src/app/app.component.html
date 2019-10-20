@@ -73,11 +73,27 @@
           </div>
         <br>
         <mat-spinner diameter="50" *ngIf="loading===true"></mat-spinner>
-        <mat-list *ngIf="loading===false">
-          <mat-list-item >The Weather is :  <span class="result"> {{ weatherData.description }}</span></mat-list-item>
-          <mat-list-item > Rain : <span class="result"> {{ weatherData.rain || 'None' }}</span></mat-list-item>
-          <mat-list-item > Clouds : <span class="result"> {{ weatherData.clouds || 'None' }}</span></mat-list-item>
-        </mat-list>
+        <div class="resutls" *ngIf="loading===false">
+          <div id="current" class="col-lg-6 wrapper">
+            <h1 class="location">{{weatherData.name}}</h1>
+            <h2 class="date">{{today | date:'EEEE, MMMM d, y'}}</h2>
+            <div class="weatherIcon">
+              <img width="100%" [src]="weatherData.imageUrl">
+            </div>
+            <p class="temp"> Temperature : {{weatherData.temp}}</p>
+            
+          </div>
+      
+          <mat-list >
+            <mat-list-item >The Weather: <span class="result"> {{ weatherData.description }}</span></mat-list-item>
+            <mat-list-item > Rain : <span class="result"> {{ weatherData.rain || 'None' }}</span></mat-list-item>
+            <mat-list-item > Clouds : <span class="result"> {{ weatherData.clouds || 'None' }}</span></mat-list-item>
+          </mat-list>
+        </div>
+
+       
+
+       
     </div>
   </mat-card>
 

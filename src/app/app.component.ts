@@ -13,7 +13,9 @@ export class AppComponent {
   weatherForm: FormGroup;
   submitted = false;
   loading = null ;
-  weatherData = {description : String, clouds : String, rain : String }
+  weatherData = {description : '', clouds : '', rain : ''  , name : '' , temp : '' , imageUrl : '' ,weatherStatus : '' }
+
+  today = new Date();
 
   constructor(
     private weatherService: WeatherService,
@@ -51,9 +53,14 @@ export class AppComponent {
           res=>{
 
             console.log('res',res)
+            this.weatherData.name = res['name'] + ',' + res['sys']['country'];
+            this.weatherData.temp = res['main'].temp;
+            this.weatherData.imageUrl = 'http://openweathermap.org/img/wn/' + res['weather'][0]['icon']+ '@2x.png';
+            this.weatherData.weatherStatus = res['weather'][0]['description'];
+
             this.weatherData.description =  res['weather'][0].description ,
-            this.weatherData.clouds = res['clouds']['all'],
-            this.weatherData.rain = res['rain']['1h'] , 
+            this.weatherData.clouds = res['clouds'] ? res['clouds']['all'] : 'None',
+            this.weatherData.rain = res['rain'] ? res['rain']['1h']  : 'None', 
             this.loading = false
             console.log('my weather', this.weatherData) 
           },

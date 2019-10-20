@@ -214,6 +214,8 @@
     line-height: 20px;
   }
 
+
+
   footer a {
     display: flex;
     align-items: center;
@@ -286,6 +288,13 @@
       width : 60% ; 
   }
 
+  .resutls{
+    display : flex ; 
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+
 
   .error-block{
     display: flex;
@@ -300,7 +309,7 @@
       font-weight: 500;
   }
   footer  { 
-      position : absolute  ; 
+      position : fixed  ; 
       bottom : 0
   }
 
@@ -325,6 +334,12 @@
     svg#rocket-smoke {
       right: 120px;
       transform: rotate(-5deg);
+    }
+
+    .resutls{
+
+      flex-direction: column;
+      
     }
   }
 

@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { WeatherApiComponent } from './weather-api/weather-api.component';
+
 import { MatCardModule  } from '@angular/material/card';
 import { MatGridListModule  } from '@angular/material/grid-list';
 import { MatFormFieldModule  } from '@angular/material/form-field';
@@ -22,8 +22,7 @@ import { WeatherService } from './services/weather.service';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    WeatherApiComponent
+    AppComponent
   ],
   imports: [
 
