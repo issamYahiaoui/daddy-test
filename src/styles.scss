@@ -6,3 +6,18 @@ body {
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.img {
+  width : 100px ;
+  height : 100px
+}
+.resRow {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  overflow: scroll;
+  height : 700px
+
+ }
+
+.resCol {
+  //display: flex ; flex-direction: column ; align-items: center ;width : 45%;
+  }

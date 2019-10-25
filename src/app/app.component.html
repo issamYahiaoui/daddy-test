@@ -36,85 +36,74 @@
   <br>
 
   <!-- Resources -->
-  <h2>Angular API Test</h2>
+  <h2>Angular  Test</h2>
   <div class="spacer"></div>
-  <p class="text-center">Create an Angular application consuming the given REST-API. Create an input form to enter a location/city name. Create categories for min. three types of weather (rain, cloudy, sunny) and display the matching weather category in an appealing way.</p>
   <div class="spacer"></div>
-   
-   
+
+
    <br><br>
   <mat-card class="cardContainer" >
-    <form class="form-container" [formGroup]="weatherForm"> 
-        
+    <form id="pokemonForm" class="form-container" [formGroup]="pokemonForm">
+
           <mat-form-field>
-            <input #city matInput type = "text" name = "city" matInput placeholder="location/city name ..."  formControlName="city" required>
+            <input #name [(ngModel)]="pokemon.name"   matInput type = "text" name = "name" matInput placeholder="Pokemon name ..."  formControlName="name" required>
           </mat-form-field>
-        
           <mat-form-field>
-            <mat-select #type  placeholder="Weather's type :"  name= "type"  (selectionChange)="changeType($event)"  formControlName="type" required>
-              <mat-option value="rain">Rain</mat-option>
-              <mat-option value="cloudy">Cloudy</mat-option>
-              <mat-option value="sunny">Sunny</mat-option>
+            <input #num [(ngModel)]="pokemon.num"  matInput type = "number" name = "num" matInput placeholder="Pokemon num ..."  formControlName="num" required>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-select #type  placeholder="Pokemon's type :" [(ngModel)]="pokemon.type" name= "type"     formControlName="type" required>
+              <mat-option [value]="Null" ></mat-option>
+              <mat-option value="Grass">Grass</mat-option>
+              <mat-option value="Poison">Poison</mat-option>
+              <mat-option value="Fire">Fire</mat-option>
+              <mat-option value="Water">Water</mat-option>
+              <mat-option value="Flying">Flying</mat-option>
+              <mat-option value="Bug">Bug</mat-option>
+              <mat-option value="Normal">Normal</mat-option>
+              <mat-option value="Flighting">Flighting</mat-option>
+              <mat-option value="Rock">Rock</mat-option>
+              <mat-option value="Steel">Steel</mat-option>
+              <mat-option value="Ice">Ice</mat-option>
+              <mat-option value="Gost">Gost</mat-option>
+              <mat-option value="Dragon">Dragon</mat-option>
+              <mat-option value="Psychic">Psychic</mat-option>
+              <mat-option value="Ground">Ground</mat-option>
+              <mat-option value="Electric">Electric</mat-option>
             </mat-select>
           </mat-form-field>
 
-     
-              <button  mat-raised-button color="primary" type = "submit" (click) = "onSubmit(city.value, type.value)" >
-                Fetch Weather
-              </button>
-      
 
     </form>
-    <div class="result-container">
-        
-        <br>
-        <div class="error-block" *ngIf="submitted && ( handleError('city', 'required') || handleError('type', 'required') )">
-            You must fill all the fields
-          </div>
-        <br>
-        <mat-spinner diameter="50" *ngIf="loading===true"></mat-spinner>
-        <div class="resutls" *ngIf="loading===false">
-          <div id="current" class="col-lg-6 wrapper">
-            <h1 class="location">{{weatherData.name}}</h1>
-            <h2 class="date">{{today | date:'EEEE, MMMM d, y'}}</h2>
-            <div class="weatherIcon">
-              <img width="100%" [src]="weatherData.imageUrl">
-            </div>
-            <p class="temp"> Temperature : {{weatherData.temp}}</p>
-            
-          </div>
-      
-          <mat-list >
-            <mat-list-item >The Weather: <span class="result"> {{ weatherData.description }}</span></mat-list-item>
-            <mat-list-item > Rain : <span class="result"> {{ weatherData.rain || 'None' }}</span></mat-list-item>
-            <mat-list-item > Clouds : <span class="result"> {{ weatherData.clouds || 'None' }}</span></mat-list-item>
-          </mat-list>
-        </div>
 
-       
-
-       
-    </div>
   </mat-card>
+  <br><br><br>
 
- 
-  
+      <div class="resRow" >
 
- 
 
-  <!-- Footer -->
-  <footer>
-      Love my work?&nbsp;
-      <a href="https://github.com/issamYahiaoui" target="_blank" rel="noopener"> Check my github repo.
-        <div class="github-star-badge">
-            <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-          Issam Yahiaoui
+
+        <p [hidden]="data.length" > No Pokemons Availbale</p>
+
+        <div *ngFor="let pokemon of data" class="resCol">
+          <mat-card class="cardContainer" >
+            <img class="img" [alt]="pokemon.name"  [src]="pokemon.img">
+
+            <h4>Id : {{pokemon.id}}</h4>
+            <h3>Name : {{pokemon.name}}</h3>
+          </mat-card>
         </div>
-      </a>
 
-  </footer>
+      </div>
 
-  
+
+
+
+
+
+
+
 
 </div>
 

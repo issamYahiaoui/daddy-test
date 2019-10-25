@@ -261,9 +261,9 @@
 
 
   .cardContainer{
-      width : 80% ; 
-      height : auto ; 
-      margin : 20px ; 
+      width : 80% ;
+      height : auto ;
+      margin : 20px ;
 
 
       display: flex;
@@ -271,7 +271,7 @@
       flex-direction: column;
 
   }
-  .form-container { 
+  .form-container {
 
       width : 100%;
       display: flex;
@@ -285,11 +285,11 @@
       display: flex;
       flex-direction: row;
       justify-content: center;
-      width : 60% ; 
+      width : 60% ;
   }
 
   .resutls{
-    display : flex ; 
+    display : flex ;
     flex-direction: row;
     align-items: center;
     justify-content: center;
@@ -308,8 +308,8 @@
       margin-left: 10px;
       font-weight: 500;
   }
-  footer  { 
-      position : fixed  ; 
+  footer  {
+      position : fixed  ;
       bottom : 0
   }
 
@@ -339,7 +339,7 @@
     .resutls{
 
       flex-direction: column;
-      
+
     }
   }
 
