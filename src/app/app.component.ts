@@ -80,19 +80,55 @@ export class AppComponent implements OnInit{
       this.data = this.pokemons ;
       return
     }
-    let nameData = await this.pokemons.filter(p =>( (p.name).toLowerCase().includes(name.toLowerCase()) ) )
-    let numData = await this.pokemons.filter(p => ( (parseInt(p.id)) === (num) ) )
-    let typeData = await this.pokemons.filter(p=>p.type.includes((this.pokemon.type)) )
+    let nameData = !name ?  this.pokemons : await this.pokemons.filter(p =>( (p.name).toLowerCase().includes(name.toLowerCase()) ) )
+    let numData = !num ?  this.pokemons : await this.pokemons.filter(p => ( (parseInt(p.id)) === (num) ) )
+    let typeData = !type ? this.pokemons : await this.pokemons.filter(p=>p.type.includes((this.pokemon.type)) )
 
     console.log('num data' , numData)
-    console.log('name data' , numData)
+    console.log('name data' , nameData)
     console.log('type data' , typeData)
+
+
+
+     this.data = this.intersection([numData,nameData,typeData])
+    console.log('res', this.data)
+
 
     // let data1= [nameData,numData]
     // let temp = data1.reduce((nameData, numData) => nameData.filter(c => numData.includes(c)))
     // let data2 = [ temp , typeData];
     // return data2.reduce((temp, typeData) => temp.filter(c => typeData.includes(c)))
 
+  }
+   intersection(arr) {
+    var result = [];
+    var lists;
+
+    if(arr.length === 1) {
+      lists = arr[0];
+    } else {
+      lists = arr;
+    }
+
+    for(var i = 0; i < lists.length; i++) {
+      var currentList = lists[i];
+      for(var y = 0; y < currentList.length; y++) {
+        var currentValue = currentList[y];
+        if(result.indexOf(currentValue) === -1) {
+          var existsInAll = true;
+          for(var x = 0; x < lists.length; x++) {
+            if(lists[x].indexOf(currentValue) === -1) {
+              existsInAll = false;
+              break;
+            }
+          }
+          if(existsInAll) {
+            result.push(currentValue);
+          }
+        }
+      }
+    }
+    return result;
   }
   async filterName (){
     console.log('Filtering name ....',this.pokemonForm.get('name').value)
