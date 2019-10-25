@@ -1,5 +1,5 @@
-# austria-angular-test
-Angular frontend test for Austria Company - Aiesec 
+# angular-test
+Angular  test 
 
 
 ## Development server

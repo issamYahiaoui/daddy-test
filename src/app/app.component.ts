@@ -74,9 +74,8 @@ export class AppComponent implements OnInit{
     let name  =  this.pokemonForm.get('name').value
     let num  =  this.pokemonForm.get('num').value
     let type  =  this.pokemonForm.get('type').value
-    console.log('Filtering name | num | type ....',name,num,type)
     if(!name && !num && type) {
-      console.log('No Filter !')
+
       this.data = this.pokemons ;
       return
     }
@@ -84,20 +83,9 @@ export class AppComponent implements OnInit{
     let numData = !num ?  this.pokemons : await this.pokemons.filter(p => ( (parseInt(p.id)) === (num) ) )
     let typeData = !type ? this.pokemons : await this.pokemons.filter(p=>p.type.includes((this.pokemon.type)) )
 
-    console.log('num data' , numData)
-    console.log('name data' , nameData)
-    console.log('type data' , typeData)
-
-
 
      this.data = this.intersection([numData,nameData,typeData])
-    console.log('res', this.data)
 
-
-    // let data1= [nameData,numData]
-    // let temp = data1.reduce((nameData, numData) => nameData.filter(c => numData.includes(c)))
-    // let data2 = [ temp , typeData];
-    // return data2.reduce((temp, typeData) => temp.filter(c => typeData.includes(c)))
 
   }
    intersection(arr) {
@@ -130,30 +118,8 @@ export class AppComponent implements OnInit{
     }
     return result;
   }
-  async filterName (){
-    console.log('Filtering name ....',this.pokemonForm.get('name').value)
-    let value= this.pokemonForm.get('name').value
-    if(!this.pokemonForm.get('name').value) {
-      this.data = this.pokemons ;
-      return
-    }
-    console.log('Res ...',(this.data[0].name).toLowerCase().includes(value.toLowerCase()))
-    this.data = await this.pokemons.filter(p =>( (p.name).toLowerCase().includes(value.toLowerCase()) ) )
-    console.log(this.data)
-  }
-  async filterNum (){
-    console.log('Filtering Num ....',this.pokemonForm.get('num').value)
-    let value= this.pokemonForm.get('num').value
-    if(!this.pokemonForm.get('num').value) {
-      this.data = this.pokemons ;
-      return
-    }
-     this.data = await this.pokemons.filter(p => ( (parseInt(p.id)) === (value) ) )
-     console.log(this.data)
 
 
-
-  }
 
 
   filterType (){
